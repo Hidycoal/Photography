@@ -7,7 +7,7 @@ import { CursorContext } from "./context/CursorContext";
 
 
 const App = () => {
-  const { cursorVariants } = useContext(CursorContext);
+  const { cursorVariants, cursorBG, setCursorBG } = useContext(CursorContext);
 	return (
 		<>
 			<Router>
@@ -17,7 +17,7 @@ const App = () => {
 			{/* cursor */}
 			<motion.div 
       variants={cursorVariants}
-      animate={'default'}
+      animate={cursorBG}
       className="w-[32px] h-[32px] bg-primary fixed top-0 left-0 z-50 pointer-events-none rounded-full"></motion.div>
 		</>
 	);
