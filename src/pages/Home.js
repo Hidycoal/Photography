@@ -29,13 +29,15 @@ const Home = () => {
 					>
 						<h1 onMouseEnter={mouseEnterHandler}
 						onMouseLeave={mouseLeaveHandler} className="h1 sm:flex sm:flex-col sm:items-center sm:gap-4 sm:mt-[-30px]   xs:flex xs:flex-col xs:items-center  xs:text-[35px] lg:flex lg:flex-col lg:items-start lg:mt-[30px] lg:text-[90px]" >
-							<p>Photographer </p>
+							<p >Photographer </p>
 							<p>& Content Creator</p>
 						</h1>
-						<p className="text-[26px] lg:text-[36px] font-primary mb-4 lg:mb-12">
+						<p onMouseEnter={mouseEnterHandler}
+						onMouseLeave={mouseLeaveHandler} className="text-[26px] lg:text-[36px] font-primary mb-4 lg:mb-12">
 							Ilorin, Nigeria.
 						</p>
-						<Link to={"/contact"} className="btn mb-[30px]">
+						<Link onMouseEnter={mouseEnterHandler}
+						onMouseLeave={mouseLeaveHandler} to={"/contact"} className="btn mb-[30px]">
 							hire me
 						</Link>
 					</motion.div>

@@ -10,6 +10,41 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
 	const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
+
+	const [result, setResult] = React.useState("");
+	const onSubmit = async (event) => {
+		event.preventDefault();
+		setResult("Sending....");
+		
+		const formData = new FormData(event.target);
+	
+		formData.append("access_key", "b4890644-f147-4ebf-905f-de7df4f8736c");
+	
+		const response = await fetch("https://api.web3forms.com/submit", {
+		  method: "POST",
+		  body: formData
+		});
+	
+		const data = await response.json();
+	
+		if (data.success) {
+		  setResult("Form Submitted Successfully");
+		  toast.success("MESSAGE SENT SUCCESSFULLY");
+		  event.target.reset();
+		} else {
+		  console.log("Error", data);
+		  toast.error('FAILED...TO SEND');
+		  setResult(data.message);
+		}
+	  };
+
+
+
+
+
+
+
+
 	//   const [result, setResult] = React.useState("");
 
 	//   const onSubmit = async (event) => {
@@ -47,6 +82,7 @@ const Contact = () => {
 		>
 			
 			<div className="container mx-auto h-full">
+				<ToastContainer />
 				<div className="flex flex-col lg:flex-row h-full items-center justify-start pt-36 gap-x-8 text-center lg:text-left">
 					<motion.div
 						initial={{ opacity: 0, y: "100%" }}
@@ -67,27 +103,28 @@ const Contact = () => {
 						>
 							I would love to hear from you
 						</p>
-						<form
+						<form onSubmit={onSubmit}
 							className="flex flex-col gap-y-4"
 						>
 							<div className="flex gap-x-10">
 								<input
 									className="outline-none border-b border-b-primary h-[60px] bg-transparent font-secondary w-full pl-3 placeholder:text-[#757879]"
 									type="text"
-									name="Name"
+									name="name"
 									placeholder="Your Name"
 									required
 								/>
 								<input
 									className="outline-none border-b border-b-primary h-[60px] bg-transparent font-secondary w-full pl-3 placeholder:text-[#757879]"
 									type="email"
-									name="Email"
+									name="email"
 									placeholder="Your Email"
 									required
 								/>
 							</div>
 							<input
 								className="outline-none border-b border-b-primary h-[60px] bg-transparent font-secondary w-full pl-3 placeholder:text-[#757879]"
+								name="message"
 								type="text"
 								placeholder="Your message"
 							/>
