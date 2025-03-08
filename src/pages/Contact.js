@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import WomanImg from "../img/contact/woman.png";
 import { motion } from "framer-motion";
 import { transition1 } from "../transitions";
@@ -6,15 +6,15 @@ import { CursorContext } from "../context/CursorContext";
 import { toast } from "react-toastify";
 
 import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
 	const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
 
-	const [result, setResult] = React.useState("");
+	const [result, setResult] = useState("");
 	const onSubmit = async (event) => {
 		event.preventDefault();
-		setResult("Sending....");
+		setResult("Sending...");
 		
 		const formData = new FormData(event.target);
 	
