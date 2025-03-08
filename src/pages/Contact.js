@@ -6,7 +6,7 @@ import { CursorContext } from "../context/CursorContext";
 import { toast } from "react-toastify";
 
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
 	const { mouseEnterHandler, mouseLeaveHandler } = useContext(CursorContext);
